@@ -1,0 +1,45 @@
+    <!-- ════════════════════════════════════════════════════════════════════════
+  GIS SPA SHELL — the ONE thing that goes into TYPO3.
+
+  Paste this whole block into a TYPO3 "HTML" content element on:
+    · the EN root page (https://gis.geol.uoa.gr/)
+    · the EL root page (https://gis-el.geol.uoa.gr/)
+  Same file, both places. That's the last TYPO3-GUI interaction you need.
+
+  Everything else — content fragments, styles, behavior — lives at:
+    /fileadmin/depts/geol.uoa.gr/gis/uploads/gis/
+      gis.css
+      gis.js
+      hero-delta.jpg
+      pages/
+        home.html
+        about-programme.html
+        admissions-apply.html
+        …
+  Edit those files locally, upload via the TYPO3 filelist (or FTP) — no
+  page tree, no content-element editing. The router in gis.js handles
+  everything client-side via hash URLs (`#/about/programme`,
+  `#/admissions/apply`, etc.).
+═════════════════════════════════════════════════════════════════════════ -->
+<!-- ?v= bumps past fileadmin's 30-day cache — increment it on every re-upload of gis.css / gis.js -->
+<link rel="stylesheet" href="https://gis.geol.uoa.gr/fileadmin/depts/geol.uoa.gr/gis/uploads/gis/gis.css?v=2026112101">
+
+<style>/* TAKE-OVER ↓ (delete these 4 lines to render inside the UOA theme) */
+  html,body{overflow:hidden !important; margin:0 !important}
+  #gis-app{position:fixed; inset:0; z-index:2147483000; overflow-y:auto; background:#fbfaf7}
+</style><!-- TAKE-OVER ↑ -->
+
+<div id="gis-app">
+  <a class="skip" href="#main" data-en="Skip to content" data-el="Μετάβαση στο περιεχόμενο">Skip to content</a>
+
+  <gis-topbar></gis-topbar>
+
+  <main id="main" aria-live="polite" aria-busy="true">
+    <!-- Router injects the current page fragment here.
+         gis.js reads location.hash → fetches pages/<slug>.html → renders. -->
+  </main>
+
+  <gis-footer></gis-footer>
+</div>
+
+<script src="https://gis.geol.uoa.gr/fileadmin/depts/geol.uoa.gr/gis/uploads/gis/gis.js?v=2026112101"></script>

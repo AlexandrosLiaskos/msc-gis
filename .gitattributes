@@ -1,0 +1,3 @@
+# Keep every file byte for byte as it is uploaded to TYPO3, with its own line endings,
+# so a file in the repository can be compared directly with the live copy.
+* -text

@@ -1,0 +1,92 @@
+<div class="gis-scope gis-fields">
+  <div class="gis-wrap">
+
+    <header class="gis-hero">
+      <div class="gis-hero__inner">
+        <p class="gis-hero__eyebrow" data-en="Foundations" data-el="Θεμέλια">Foundations</p>
+        <h1 class="gis-hero__title" data-en="Programming tools &amp; spatial databases" data-el="Εργαλεία προγραμματισμού &amp; χωρικές βάσεις δεδομένων">Programming tools &amp; spatial databases</h1>
+        <div class="gis-hero__rule" aria-hidden="true"></div>
+        <p class="gis-hero__standfirst"
+           data-en="Modern GIS practice runs on code. The programme builds fluency in the open-source stack that reads, transforms, and serves spatial data at scale — Python, PostGIS, QGIS, GDAL, and cloud-native geospatial formats."
+           data-el="Η σύγχρονη πρακτική του GIS στηρίζεται στον κώδικα. Το Πρόγραμμα καλλιεργεί εξοικείωση με το ανοιχτού κώδικα οικοσύστημα που διαβάζει, μετασχηματίζει και εξυπηρετεί χωρικά δεδομένα σε κλίμακα — Python, PostGIS, QGIS, GDAL και cloud-native γεωχωρικά πρότυπα.">
+          Modern GIS practice runs on code. The programme builds fluency in the open-source stack that reads, transforms, and serves spatial data at scale — Python, PostGIS, QGIS, GDAL, and cloud-native geospatial formats.
+        </p>
+      </div>
+    </header>
+
+    <!-- 01 · The Python stack -->
+    <section class="gis-article">
+      <div class="gis-article__aside">
+        <span class="gis-article__index" aria-hidden="true">01</span>
+        <h2 class="gis-article__title" data-en="The Python stack" data-el="Το οικοσύστημα της Python">The Python stack</h2>
+      </div>
+      <div class="gis-article__body">
+        <div class="gis-prose">
+          <p data-en="Python is the lingua franca of geospatial analysis. GeoPandas extends the DataFrame with geometry; Shapely handles geometric operations; Rasterio reads and writes raster grids; pyproj manages coordinate systems. Together they cover most day-to-day GIS scripting." data-el="Η Python είναι η κοινή γλώσσα της γεωχωρικής ανάλυσης. Το GeoPandas επεκτείνει το DataFrame με γεωμετρία· το Shapely χειρίζεται γεωμετρικές πράξεις· το Rasterio διαβάζει και γράφει ψηφιδωτά· το pyproj διαχειρίζεται συστήματα συντεταγμένων. Μαζί καλύπτουν το μεγαλύτερο μέρος της καθημερινής συγγραφής κώδικα GIS.">Python is the lingua franca of geospatial analysis. GeoPandas extends the DataFrame with geometry; Shapely handles geometric operations; Rasterio reads and writes raster grids; pyproj manages coordinate systems. Together they cover most day-to-day GIS scripting.</p>
+          <pre class="gis-code" aria-label="GeoPandas example"><code>import geopandas as gpd
+
+# Read a vector layer and reproject to Web Mercator
+gdf = gpd.read_file("naxos_landforms.gpkg")
+gdf = gdf.to_crs(epsg=3857)
+
+# Spatial join: which landforms fall inside each survey area
+joined = gpd.sjoin(gdf, survey_areas, predicate="within")
+print(joined[["landform", "area_name"]].head())</code></pre>
+          <ul class="gis-links">
+            <li><a href="https://geopandas.org/" target="_blank" rel="noopener" data-en="GeoPandas — vector data in Python →" data-el="GeoPandas — διανυσματικά δεδομένα στην Python →">GeoPandas — vector data in Python →</a></li>
+            <li><a href="https://shapely.readthedocs.io/" target="_blank" rel="noopener" data-en="Shapely — geometric operations →" data-el="Shapely — γεωμετρικές πράξεις →">Shapely — geometric operations →</a></li>
+            <li><a href="https://rasterio.readthedocs.io/" target="_blank" rel="noopener" data-en="Rasterio — raster I/O →" data-el="Rasterio — είσοδος/έξοδος ψηφιδωτών →">Rasterio — raster I/O →</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · Spatial databases -->
+    <section class="gis-article">
+      <div class="gis-article__aside">
+        <span class="gis-article__index" aria-hidden="true">02</span>
+        <h2 class="gis-article__title" data-en="Spatial databases — PostGIS" data-el="Χωρικές βάσεις δεδομένων — PostGIS">Spatial databases — PostGIS</h2>
+      </div>
+      <div class="gis-article__body">
+        <div class="gis-prose">
+          <p data-en="PostGIS turns PostgreSQL into a spatial database: geometry and geography types, spatial indexes, and hundreds of functions for measurement, overlay, and topology. Analysis moves next to the data, so queries stay fast even at national scale." data-el="Το PostGIS μετατρέπει την PostgreSQL σε χωρική βάση δεδομένων: τύπους geometry και geography, χωρικά ευρετήρια και εκατοντάδες συναρτήσεις για μετρήσεις, επικαλύψεις και τοπολογία. Η ανάλυση μετακινείται δίπλα στα δεδομένα, ώστε τα ερωτήματα να παραμένουν γρήγορα ακόμη και σε εθνική κλίμακα.">PostGIS turns PostgreSQL into a spatial database: geometry and geography types, spatial indexes, and hundreds of functions for measurement, overlay, and topology. Analysis moves next to the data, so queries stay fast even at national scale.</p>
+          <pre class="gis-code" aria-label="PostGIS example"><code>-- Find all sample points within 500 m of the coastline
+SELECT p.id, p.name
+FROM   samples   AS p
+JOIN   coastline AS c
+  ON   ST_DWithin(p.geom, c.geom, 500)
+ORDER BY p.id;</code></pre>
+          <ul class="gis-links">
+            <li><a href="https://postgis.net/" target="_blank" rel="noopener" data-en="PostGIS — spatial database extender →" data-el="PostGIS — χωρική επέκταση βάσης δεδομένων →">PostGIS — spatial database extender →</a></li>
+            <li><a href="https://www.postgresql.org/" target="_blank" rel="noopener" data-en="PostgreSQL — the host database →" data-el="PostgreSQL — η βάση δεδομένων →">PostgreSQL — the host database →</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · Desktop, CLI & cloud-native -->
+    <section class="gis-article">
+      <div class="gis-article__aside">
+        <span class="gis-article__index" aria-hidden="true">03</span>
+        <h2 class="gis-article__title" data-en="Desktop, CLI &amp; cloud-native" data-el="Desktop, CLI &amp; cloud-native">Desktop, CLI &amp; cloud-native</h2>
+      </div>
+      <div class="gis-article__body">
+        <div class="gis-prose">
+          <p data-en="ArcGIS Pro — Esri's industry-standard commercial suite — and QGIS — its open-source counterpart — are the two desktop GIS environments for cartography and interactive analysis; GDAL/OGR is the translation layer beneath almost every GIS tool, converting between hundreds of raster and vector formats. Cloud-native formats — Cloud-Optimized GeoTIFF and the STAC catalog specification — let analysis stream imagery straight from object storage without downloading whole scenes." data-el="Το ArcGIS Pro — η επαγγελματική σουίτα-πρότυπο της Esri — και το QGIS — το ανοιχτού κώδικα αντίστοιχό του — είναι τα δύο επιτραπέζια περιβάλλοντα GIS για χαρτογραφία και διαδραστική ανάλυση· το GDAL/OGR είναι το επίπεδο μετάφρασης κάτω από σχεδόν κάθε εργαλείο GIS, μετατρέποντας μεταξύ εκατοντάδων ψηφιδωτών και διανυσματικών προτύπων. Τα cloud-native πρότυπα — Cloud-Optimized GeoTIFF και η προδιαγραφή καταλόγου STAC — επιτρέπουν στην ανάλυση να ρέει απευθείας από αποθήκευση αντικειμένων χωρίς λήψη ολόκληρων σκηνών.">ArcGIS Pro — Esri's industry-standard commercial suite — and QGIS — its open-source counterpart — are the two desktop GIS environments for cartography and interactive analysis; GDAL/OGR is the translation layer beneath almost every GIS tool, converting between hundreds of raster and vector formats. Cloud-native formats — Cloud-Optimized GeoTIFF and the STAC catalog specification — let analysis stream imagery straight from object storage without downloading whole scenes.</p>
+          <ul class="gis-links">
+            <li><a href="https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview" target="_blank" rel="noopener" data-en="ArcGIS Pro — Esri desktop GIS →" data-el="ArcGIS Pro — επιτραπέζιο GIS της Esri →">ArcGIS Pro — Esri desktop GIS →</a></li>
+            <li><a href="https://qgis.org/" target="_blank" rel="noopener" data-en="QGIS — open-source desktop GIS →" data-el="QGIS — επιτραπέζιο GIS ανοιχτού κώδικα →">QGIS — open-source desktop GIS →</a></li>
+            <li><a href="https://gdal.org/" target="_blank" rel="noopener" data-en="GDAL/OGR — format translation →" data-el="GDAL/OGR — μετατροπή προτύπων →">GDAL/OGR — format translation →</a></li>
+            <li><a href="https://stacspec.org/" target="_blank" rel="noopener" data-en="STAC — SpatioTemporal Asset Catalogs →" data-el="STAC — κατάλογοι χωρο-χρονικών δεδομένων →">STAC — SpatioTemporal Asset Catalogs →</a></li>
+            <li><a href="https://www.cogeo.org/" target="_blank" rel="noopener" data-en="Cloud-Optimized GeoTIFF →" data-el="Cloud-Optimized GeoTIFF →">Cloud-Optimized GeoTIFF →</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="gis-fields__back" aria-label="Related">
+      <a class="link-soft" href="#/" data-en="← Back to home" data-el="← Επιστροφή στην αρχική">← Back to home</a>
+    </nav>
+
+  </div>
+</div>

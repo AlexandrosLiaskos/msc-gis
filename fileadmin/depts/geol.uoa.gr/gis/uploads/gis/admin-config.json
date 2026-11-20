@@ -1,0 +1,7 @@
+{
+  "_note": "PBKDF2-SHA-256 passphrase hash for the internal admin page. Rotate by replacing salt+hash. This gates already-public content only — never store secrets behind it.",
+  "salt": "c765ad0c66771da27d934b36b06ca24c",
+  "iterations": 100000,
+  "bits": 256,
+  "hash": "5a89a4d7ee430fdaebd4b256216cdab7d1190f773d6557f1f64f10fa1c21c2fd"
+}

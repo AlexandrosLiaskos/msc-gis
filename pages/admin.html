@@ -1,0 +1,69 @@
+<div class="gis-scope gis-admin" id="gis-admin">
+  <div class="gis-wrap">
+
+    <header class="gis-admin__masthead">
+      <div class="gis-admin__brand">
+        <p class="gis-admin__eyebrow" data-en="Administration · Internal" data-el="Διαχείριση · Εσωτερικό">Administration · Internal</p>
+        <h1 class="gis-admin__title" data-en="Admin console" data-el="Κονσόλα διαχείρισης">Admin console</h1>
+      </div>
+      <button class="gis-admin__lock" type="button" id="gis-admin-lock" hidden data-en="Lock" data-el="Κλείδωμα">Lock</button>
+    </header>
+
+    <!-- Passphrase gate — shown until unlocked (see wireAdmin in gis.js) -->
+    <div class="gis-admin__gate" id="gis-admin-gate">
+      <form class="gis-admin__gatecard" id="gis-admin-form" autocomplete="off" novalidate>
+        <p class="gis-admin__note" data-en="Restricted area. Enter the passphrase to continue." data-el="Περιορισμένη περιοχή. Εισαγάγετε τον κωδικό για να συνεχίσετε.">Restricted area. Enter the passphrase to continue.</p>
+        <label class="gis-admin__label" for="gis-admin-pass" data-en="Passphrase" data-el="Κωδικός πρόσβασης">Passphrase</label>
+        <input class="gis-admin__input" id="gis-admin-pass" type="password" name="pass" autocomplete="current-password" spellcheck="false" aria-describedby="gis-admin-error">
+        <button class="gis-admin__btn" type="submit" data-en="Unlock →" data-el="Ξεκλείδωμα →">Unlock →</button>
+        <p class="gis-admin__error" id="gis-admin-error" role="alert" hidden data-en="Incorrect passphrase." data-el="Λανθασμένος κωδικός.">Incorrect passphrase.</p>
+      </form>
+    </div>
+
+    <!-- Vault — hidden until unlocked -->
+    <div class="gis-admin__vault" id="gis-admin-vault" hidden>
+
+      <!-- Home / dashboard: a list of admin sections -->
+      <section class="gis-admin__view" id="gis-admin-home">
+        <ul class="gis-admin__menu">
+          <li>
+            <button class="gis-admin__card" type="button" data-admin-open="cycles">
+              <span class="gis-admin__card-text">
+                <span class="gis-admin__card-title" data-en="Past admission cycles" data-el="Παλαιότεροι κύκλοι εισαγωγής">Past admission cycles</span>
+                <span class="gis-admin__card-desc" data-en="Archived Calls, kept for reference" data-el="Αρχειοθετημένες προκηρύξεις, για αναφορά">Archived Calls, kept for reference</span>
+              </span>
+              <span class="gis-admin__card-meta">
+                <span class="gis-admin__badge">1</span>
+                <span class="gis-admin__chev" aria-hidden="true">→</span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cycles list -->
+      <section class="gis-admin__view" id="gis-admin-cycles" hidden>
+        <button class="gis-admin__back" type="button" data-admin-back>
+          <span class="gis-admin__back-arrow" aria-hidden="true">←</span>
+          <span data-en="Admin console" data-el="Κονσόλα διαχείρισης">Admin console</span>
+        </button>
+        <h2 class="gis-admin__view-title" data-en="Past admission cycles" data-el="Παλαιότεροι κύκλοι εισαγωγής">Past admission cycles</h2>
+        <p class="gis-admin__view-note" data-en="Public documents only." data-el="Μόνο δημόσια έγγραφα.">Public documents only.</p>
+
+        <ul class="gis-admin__list">
+          <li class="gis-admin__cycle">
+            <div class="gis-admin__cycle-head">
+              <span class="gis-admin__cycle-year">2025–26</span>
+              <span class="gis-admin__cycle-window" data-en="19 May – 12 September 2025" data-el="19 Μαΐου – 12 Σεπτεμβρίου 2025">19 May – 12 September 2025</span>
+            </div>
+            <div class="gis-admin__cycle-docs">
+              <a href="/fileadmin/depts/geol.uoa.gr/gis/uploads/MSc_GIS_APPLICATION-FORM-2025-2026.docx" data-en="Application form (DOCX)" data-el="Αίτηση (DOCX)">Application form (DOCX)</a>
+              <a href="/fileadmin/depts/geol.uoa.gr/gis/uploads/PROKIRYXI_2025-26.pdf" data-en="Call for Applications (PDF)" data-el="Προκήρυξη (PDF)">Call for Applications (PDF)</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</div>

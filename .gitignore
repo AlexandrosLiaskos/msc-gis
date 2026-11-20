@@ -1,0 +1,8 @@
+# Browser automation scratch files
+.playwright-mcp/
+
+# Office lock files and Windows metadata
+~$*
+Thumbs.db
+desktop.ini
+*.tmp
